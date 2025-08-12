@@ -6,9 +6,13 @@
   <title>Projeto 21 — Materiais para Download</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="description" content="Baixe os materiais oficiais do Projeto 21: formulários por área, cronograma semanal e planilha de acompanhamento." />
-  <style>body{font-feature-settings:"liga","kern"}</style>
+  <style>
+    body{font-feature-settings:"liga","kern"}
+    .chip{ @apply rounded-full px-2.5 py-0.5 text-[12px] font-medium border; }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
+  <!-- HERO -->
   <header class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
     <div class="max-w-5xl mx-auto px-6 py-10">
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Projeto 21 — Materiais oficiais</h1>
@@ -23,55 +27,77 @@
     </div>
   </header>
 
+  <!-- AVISO -->
   <div class="bg-yellow-50 border-y border-yellow-200">
     <div class="max-w-5xl mx-auto px-6 py-3 text-sm text-yellow-900">
-      <strong>Atenção:</strong> esta página aponta para <em>arquivos na mesma pasta</em>. Para trocar, substitua o arquivo aqui no repositório e ajuste o <code>manifest</code> no final deste HTML.
+      <strong>Atenção:</strong> os links abaixo apontam para arquivos na <em>mesma pasta</em> deste site. Renomeou algum arquivo? Ajuste o <code>manifest</code> no final do HTML.
     </div>
   </div>
 
-  <main id="downloads" class="max-w-5xl mx-auto px-6 py-10">
+  <!-- BUSCA -->
+  <div class="max-w-5xl mx-auto px-6 pt-8">
+    <label class="block text-sm font-medium text-slate-600 mb-2">Buscar arquivo por nome</label>
+    <input id="search" type="search" placeholder="ex.: Família, Cronograma, Planilha…" class="w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white" />
+    <p class="text-xs text-slate-500 mt-2">Dica: a busca filtra em todas as seções ao mesmo tempo.</p>
+  </div>
+
+  <!-- DOWNLOADS -->
+  <main id="downloads" class="max-w-5xl mx-auto px-6 py-8">
     <div class="grid md:grid-cols-2 gap-6">
+      <!-- MAPAS -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Mapas & Visuais</h2>
           <p class="text-sm text-slate-600 mt-1">Apoio visual para planejamento e reflexão.</p>
         </div>
-        <ul id="list-mapas" class="px-6 pb-6 space-y-2"></ul>
+        <ul id="list-mapas" class="px-6 pb-6 space-y-3"></ul>
       </section>
 
+      <!-- EXECUÇÃO -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Execução</h2>
-        <p class="text-sm text-slate-600 mt-1">Formulários por área e cronograma semanal.</p>
+          <p class="text-sm text-slate-600 mt-1">Formulários por área e cronograma semanal.</p>
         </div>
-        <ul id="list-execucao" class="px-6 pb-6 space-y-2"></ul>
+        <ul id="list-execucao" class="px-6 pb-6 space-y-3"></ul>
       </section>
 
+      <!-- ACOMPANHAMENTO -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Acompanhamento & Pontuação</h2>
           <p class="text-sm text-slate-600 mt-1">Planilha de controle do Projeto 21.</p>
         </div>
-        <ul id="list-acompanhamento" class="px-6 pb-6 space-y-2"></ul>
+        <ul id="list-acompanhamento" class="px-6 pb-6 space-y-3"></ul>
       </section>
 
+      <!-- FINALIZAÇÃO -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Finalização</h2>
           <p class="text-sm text-slate-600 mt-1">Avaliação e reflexão final.</p>
         </div>
-        <ul id="list-finalizacao" class="px-6 pb-6 space-y-2"></ul>
+        <ul id="list-finalizacao" class="px-6 pb-6 space-y-3"></ul>
       </section>
+    </div>
+
+    <!-- LINK GH -->
+    <div class="mt-8 text-center">
+      <a href="https://github.com/wygaz/projeto21-downloads" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-4 py-2 bg-white hover:bg-slate-50">
+        Ver tudo no GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
     </div>
   </main>
 
+  <!-- COMO USAR -->
   <section id="como-usar" class="max-w-5xl mx-auto px-6 pb-14">
     <div class="rounded-2xl bg-white shadow-sm border border-slate-200 p-6">
       <h3 class="text-lg font-semibold">Como publicar/atualizar</h3>
       <ol class="list-decimal ml-5 mt-2 space-y-1 text-sm text-slate-700">
         <li>Envie os arquivos para a <strong>raiz</strong> deste repositório (mesma pasta do <code>index.html</code>).</li>
-        <li>Ajuste abaixo o <code>manifest</code> se renomear arquivos.</li>
-        <li>Espere ~1 minuto para o GitHub Pages atualizar o site.</li>
+        <li>Se renomear algo, ajuste no bloco <code>manifest</code> deste arquivo.</li>
+        <li>Aguarde ~1 minuto para o GitHub Pages atualizar.</li>
       </ol>
     </div>
   </section>
@@ -83,36 +109,60 @@
   </footer>
 
   <script>
-    // ====== MANIFEST (arquivos como no seu print) ======
+    /* ======================
+       MANIFESTO DE ARQUIVOS
+       ====================== */
     const manifest = {
       mapas: [
-        { label: "Cronograma semanal de metas (PNG)", path: "Cronograma_semanal_de_Metas.png" }
+        { label: "Cronograma semanal de metas (PNG)", path: "Cronograma_semanal_de_Metas.png",
+          desc: "Quadro visual para planejar e acompanhar as metas na semana." }
       ],
       execucao: [
-        { label: "Área — Família (DOCX)", path: "Projeto21_Familia.docx" },
-        { label: "Área — Igreja (DOCX)", path: "Projeto21_Area_Igreja.docx" },
-        { label: "Área — Escola (DOCX)", path: "Projeto21_Area_Escola.docx" },
-        { label: "Área — Amigos (DOCX)", path: "Projeto21_Area_Amigos.docx" },
-        { label: "Área — Comunidade (DOCX)", path: "Projeto21_Area_Comunidade.docx" },
-        { label: "Área — Eu Mesmo (DOCX)", path: "Projeto21_Area_Eu_Mesmo.docx" },
-        { label: "Cronograma semanal de metas (DOCX)", path: "CronogramaSemanalDeMetas.docx" }
+        { label: "Área — Família (DOCX)", path: "Projeto21_Familia.docx",
+          desc: "Formulário de execução focado na área Família." },
+        { label: "Área — Igreja (DOCX)", path: "Projeto21_Area_Igreja.docx",
+          desc: "Formulário de execução para atividades e compromissos na Igreja." },
+        { label: "Área — Escola (DOCX)", path: "Projeto21_Area_Escola.docx",
+          desc: "Formulário de execução para rotinas e metas escolares." },
+        { label: "Área — Amigos (DOCX)", path: "Projeto21_Area_Amigos.docx",
+          desc: "Formulário de execução voltado a relacionamentos com amigos." },
+        { label: "Área — Comunidade (DOCX)", path: "Projeto21_Area_Comunidade.docx",
+          desc: "Formulário de execução para ações na comunidade." },
+        { label: "Área — Eu Mesmo (DOCX)", path: "Projeto21_Area_Eu_Mesmo.docx",
+          desc: "Formulário de execução para autocuidado e desenvolvimento pessoal." },
+        { label: "Cronograma semanal de metas (DOCX)", path: "CronogramaSemanalDeMetas.docx",
+          desc: "Modelo editável do cronograma semanal de metas." }
       ],
       acompanhamento: [
-        { label: "Planilha — Projeto21_FUNCIONANDO_AUTOMATIZADO_OK (XLSX)", path: "Projeto21_FUNCIONANDO_AUTOMATIZADO_OK.xlsx" }
+        { label: "Planilha — Projeto21_FUNCIONANDO_AUTOMATIZADO_OK (XLSX)", path: "Projeto21_FUNCIONANDO_AUTOMATIZADO_OK.xlsx",
+          desc: "Planilha de acompanhamento com áreas, objetivos, estratégias e resumos." }
       ],
       finalizacao: [
-        { label: "Avaliação & Reflexão final (PNG)", path: "Avaliacao_e_Reflexao_Final.png" }
+        { label: "Avaliação & Reflexão final (PNG)", path: "Avaliacao_e_Reflexao_Final.png",
+          desc: "Guia visual para reflexão e fechamento do ciclo de 21 dias." }
       ]
     };
 
-    // Ícone por extensão
-    function iconFor(path){
-      const ext = path.split('.').pop().toLowerCase();
-      if (ext === 'docx') return '📄';
-      if (ext === 'xlsx') return '📊';
-      if (ext === 'png' ) return '🖼️';
-      if (ext === 'pdf' ) return '📕';
+    /* ===== utilitários ===== */
+    function ext(path){ return (path.split('.').pop() || '').toLowerCase(); }
+    function icon(path){
+      const e = ext(path);
+      if (e === 'docx') return '📄';
+      if (e === 'xlsx') return '📊';
+      if (e === 'png')  return '🖼️';
+      if (e === 'pdf')  return '📕';
       return '📎';
+    }
+    function typeBadge(path){
+      const e = ext(path);
+      const base = "chip border-slate-300 text-slate-700 bg-slate-50";
+      const map = {
+        docx: "border-blue-300 text-blue-700 bg-blue-50",
+        xlsx: "border-emerald-300 text-emerald-700 bg-emerald-50",
+        png:  "border-amber-300 text-amber-700 bg-amber-50",
+        pdf:  "border-rose-300 text-rose-700 bg-rose-50"
+      };
+      return `<span class="${map[e] || base}">${e.toUpperCase()}</span>`;
     }
 
     function renderList(list, containerId) {
@@ -120,34 +170,58 @@
       ul.innerHTML = "";
       list.forEach(item => {
         const li = document.createElement("li");
-        li.className = "flex items-center justify-between gap-3 p-3 border border-slate-200 rounded-xl hover:bg-slate-50";
+        li.className = "file-row group p-3 border border-slate-200 rounded-xl bg-white hover:bg-slate-50 transition";
+
+        // top line: icon + label + badge + button
+        const top = document.createElement("div");
+        top.className = "flex items-center justify-between gap-3";
 
         const left = document.createElement("div");
         left.className = "flex items-center gap-3 min-w-0";
-        const ico = document.createElement("span");
-        ico.textContent = iconFor(item.path);
+        const ico = document.createElement("span"); ico.textContent = icon(item.path);
         const a = document.createElement("a");
-        a.href = item.path;
-        a.className = "truncate text-blue-700 hover:text-blue-900";
+        a.href = item.path; a.className = "truncate text-blue-700 hover:text-blue-900 font-medium";
         a.textContent = item.label;
 
-        left.appendChild(ico); left.appendChild(a);
+        const badge = document.createElement("div");
+        badge.innerHTML = typeBadge(item.path);
+
+        left.appendChild(ico); left.appendChild(a); left.appendChild(badge);
 
         const btn = document.createElement("a");
         btn.href = item.path;
         btn.className = "shrink-0 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-3 py-1.5 text-white text-sm hover:bg-blue-700";
         btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg> Baixar';
 
-        li.appendChild(left);
-        li.appendChild(btn);
+        top.appendChild(left); top.appendChild(btn);
+
+        // description
+        const desc = document.createElement("p");
+        desc.className = "text-[13px] text-slate-600 mt-1";
+        desc.textContent = item.desc || "";
+
+        li.appendChild(top); li.appendChild(desc);
         ul.appendChild(li);
       });
     }
 
+    // render inicial
     renderList(manifest.mapas, 'list-mapas');
     renderList(manifest.execucao, 'list-execucao');
     renderList(manifest.acompanhamento, 'list-acompanhamento');
     renderList(manifest.finalizacao, 'list-finalizacao');
+
+    // busca
+    const q = document.getElementById('search');
+    q.addEventListener('input', () => {
+      const term = q.value.toLowerCase().trim();
+      document.querySelectorAll('.file-row').forEach(row => row.style.display = '');
+      if (!term) return;
+      document.querySelectorAll('.file-row').forEach(row => {
+        const text = row.innerText.toLowerCase();
+        if (!text.includes(term)) row.style.display = 'none';
+      });
+    });
   </script>
 </body>
 </html>
