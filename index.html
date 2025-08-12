@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projeto 21 — Materiais para Download</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="description" content="Baixe os materiais oficiais do Projeto 21: formulários por área, cronogramas e a planilha de acompanhamento." />
+  <meta name="description" content="Baixe os materiais oficiais do Projeto 21: formulários por área, cronograma semanal e planilha de acompanhamento." />
   <style>body{font-feature-settings:"liga","kern"}</style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-  <!-- Hero -->
   <header class="bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
-    <div class="max-w-5xl mx-auto px-6 py-12">
+    <div class="max-w-5xl mx-auto px-6 py-10">
       <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Projeto 21 — Materiais oficiais</h1>
       <p class="mt-3 text-slate-100">Formulários por área, cronogramas e planilha de acompanhamento.</p>
       <div class="mt-6 flex flex-wrap gap-3">
@@ -24,17 +23,14 @@
     </div>
   </header>
 
-  <!-- Aviso -->
   <div class="bg-yellow-50 border-y border-yellow-200">
     <div class="max-w-5xl mx-auto px-6 py-3 text-sm text-yellow-900">
-      <strong>Atenção:</strong> esta página aponta para <em>arquivos na mesma pasta</em>. Para trocar um arquivo, substitua-o aqui e atualize o <code>manifest</code> no final deste arquivo.
+      <strong>Atenção:</strong> esta página aponta para <em>arquivos na mesma pasta</em>. Para trocar, substitua o arquivo aqui no repositório e ajuste o <code>manifest</code> no final deste HTML.
     </div>
   </div>
 
-  <!-- Downloads -->
   <main id="downloads" class="max-w-5xl mx-auto px-6 py-10">
-    <div class="grid sm:grid-cols-2 gap-6">
-      <!-- Mapas -->
+    <div class="grid md:grid-cols-2 gap-6">
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Mapas & Visuais</h2>
@@ -43,16 +39,14 @@
         <ul id="list-mapas" class="px-6 pb-6 space-y-2"></ul>
       </section>
 
-      <!-- Execução -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Execução</h2>
-          <p class="text-sm text-slate-600 mt-1">Formulários por área e cronograma semanal.</p>
+        <p class="text-sm text-slate-600 mt-1">Formulários por área e cronograma semanal.</p>
         </div>
         <ul id="list-execucao" class="px-6 pb-6 space-y-2"></ul>
       </section>
 
-      <!-- Acompanhamento -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Acompanhamento & Pontuação</h2>
@@ -61,7 +55,6 @@
         <ul id="list-acompanhamento" class="px-6 pb-6 space-y-2"></ul>
       </section>
 
-      <!-- Finalização -->
       <section class="rounded-2xl bg-white shadow-sm border border-slate-200">
         <div class="p-6">
           <h2 class="text-xl font-semibold">Finalização</h2>
@@ -72,14 +65,13 @@
     </div>
   </main>
 
-  <!-- Como usar -->
   <section id="como-usar" class="max-w-5xl mx-auto px-6 pb-14">
     <div class="rounded-2xl bg-white shadow-sm border border-slate-200 p-6">
       <h3 class="text-lg font-semibold">Como publicar/atualizar</h3>
       <ol class="list-decimal ml-5 mt-2 space-y-1 text-sm text-slate-700">
-        <li>Coloque os arquivos na mesma pasta deste <code>index.html</code>.</li>
-        <li>Edite o bloco <code>manifest</code> abaixo: ajuste rótulos e nomes de arquivo conforme necessário.</li>
-        <li>Se usar GitHub Pages, publique esta pasta na branch configurada em <em>Settings → Pages</em>.</li>
+        <li>Envie os arquivos para a <strong>raiz</strong> deste repositório (mesma pasta do <code>index.html</code>).</li>
+        <li>Ajuste abaixo o <code>manifest</code> se renomear arquivos.</li>
+        <li>Espere ~1 minuto para o GitHub Pages atualizar o site.</li>
       </ol>
     </div>
   </section>
@@ -91,7 +83,7 @@
   </footer>
 
   <script>
-    // ========= MANIFEST (arquivos exatamente como no seu print) =========
+    // ====== MANIFEST (arquivos como no seu print) ======
     const manifest = {
       mapas: [
         { label: "Cronograma semanal de metas (PNG)", path: "Cronograma_semanal_de_Metas.png" }
@@ -113,27 +105,45 @@
       ]
     };
 
-    // utilitário de render
+    // Ícone por extensão
+    function iconFor(path){
+      const ext = path.split('.').pop().toLowerCase();
+      if (ext === 'docx') return '📄';
+      if (ext === 'xlsx') return '📊';
+      if (ext === 'png' ) return '🖼️';
+      if (ext === 'pdf' ) return '📕';
+      return '📎';
+    }
+
     function renderList(list, containerId) {
       const ul = document.getElementById(containerId);
       ul.innerHTML = "";
       list.forEach(item => {
         const li = document.createElement("li");
         li.className = "flex items-center justify-between gap-3 p-3 border border-slate-200 rounded-xl hover:bg-slate-50";
+
+        const left = document.createElement("div");
+        left.className = "flex items-center gap-3 min-w-0";
+        const ico = document.createElement("span");
+        ico.textContent = iconFor(item.path);
         const a = document.createElement("a");
         a.href = item.path;
-        a.download = "";
         a.className = "truncate text-blue-700 hover:text-blue-900";
         a.textContent = item.label;
+
+        left.appendChild(ico); left.appendChild(a);
+
         const btn = document.createElement("a");
         btn.href = item.path;
         btn.className = "shrink-0 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-3 py-1.5 text-white text-sm hover:bg-blue-700";
         btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg> Baixar';
-        li.appendChild(a); li.appendChild(btn); ul.appendChild(li);
+
+        li.appendChild(left);
+        li.appendChild(btn);
+        ul.appendChild(li);
       });
     }
 
-    // render
     renderList(manifest.mapas, 'list-mapas');
     renderList(manifest.execucao, 'list-execucao');
     renderList(manifest.acompanhamento, 'list-acompanhamento');
